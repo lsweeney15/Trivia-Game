@@ -27,44 +27,21 @@ font-family: 'Kaushan Script', cursive; */
 	width: 60%;
 	text-align: center;
   }
-  
-section{
-	width: 75%;
-	margin-left: auto;
-    margin-right: auto;
-    text-align: center
-}
-header, footer{
-	background-color: orange;
-	height: 100px;
-}
+
 /* header */
 h1{
-	padding: 20px 30px 10px 30px;
+	padding: 20px 30px 0px 30px;
 	font-size: 52px;
 	font-style: bold;
 	color: #21387c;
 	font-family: 'Quicksand', sans-serif;
+	text-align: center;
 }
+
 h2{
-	font-size: 30px;
-}
-
-ul{
-	text-align: auto;
-}
-/* main section */
-.main-section{
-    background-color: #0c4f23;
-    color: #fff;
-    opacity: 0.7;
-}
-
-button{
-	background-color: #21387c;
-	width: 20%;
-	height: 20px;
-	margin-top: 30px;
+	font-size: 20px;
+	color: #21387c;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 .question, .answers{
@@ -74,25 +51,28 @@ button{
     text-align: left;
 }
 
-#start-button {
+#start, #end {
 	background-color: #21387c;
 	border: white 1px solid;
 	color: white;
-	font-size: 24px;
+	font-size: 20px;
 	font-style: bold;
-	height: 60px;
-	width: 40%;
-	margin: 30px auto;
-	Padding: 0px 40px 0px 40px;
+	height: 40px;
+	padding-bottom: 10px;
+	margin-bottom: 30px;
+	margin-top: 10px;
 }
 
-#results, #restart, .question, .answers{
+#end {
+	border-radius: 10px;
+}
+
+.question, .answers{
 	display: none;
 }
 
-#submit {
-padding: 20px;
-
+.counter {
+	
 }
 
 .rules{
@@ -101,3 +81,69 @@ padding: 20px;
 	font-family: 'Abel', sans-serif;
 	color: #21387c;
 }
+
+<style>
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #21387c;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+</style>

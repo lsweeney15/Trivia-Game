@@ -7,7 +7,7 @@ $(document).on("click", "#end", function () {
 })
 
 var questions = [{
-  question: "1. In S6E14 'Sabre' What famous actor is featured as himself in the Sabre orientation video?",
+  question: '1. In Season 6, Episode 14, "Sabre", what famous actor is featured as himself in the Sabre orientation video?',
   answers: ["Christian Slater", "Johnny Depp", "Tom Hanks", "Joe Rogan"],
   correctAnswer: "Christian Slater"
 }, {
@@ -17,17 +17,17 @@ var questions = [{
   correctAnswer: 'WLHUNG'
 }, {
 
-  question: "3. In S3E22 'Beach Games' Who gets abandoned in the lake wearing a sumo costume?",
+  question: '3. In Season 3, Episdoe 22, "Beach Games" who gets abandoned in the lake wearing a sumo costume?',
   answers: ["Andy", "Stanley", "Dwight", "Phyllis"],
   correctAnswer: "Andy"
 }, {
 
   question: "4. Which of the following is NOT the name of one of Michael Scott’s alter egos",
-  answers: ["Professor Scott", "Ping", "Michel Klump", "Agent Michael Scarn"],
-  correctAnswer: "Professor Scott"
+  answers: ["Ping", "Michel Klump", "Agent Michael Scarn", "Mark Greg Sputnik"],
+  correctAnswer: "Mark Greg Sputnik"
 }, {
 
-  question: "5. In S5E20 'Dream Team' Michael Scott Paper Company meets with an investor.  Who is it?",
+  question: "5. In Season Five, Episode 20, 'Dream Team' Michael Scott Paper Company meets with an investor.  Who is it?",
   answers: ["Vikram", "Nana", "Pam’s Mom", "David Wallace"],
   correctAnswer: "Nana"
 }];
@@ -35,26 +35,27 @@ var questions = [{
 var game = {
   correct: 0,
   incorrect: 0,
-  counter: 20,
+  counter: 60,
   countdown: function () {
     game.counter--;
     $('#counter').html(game.counter);
     if (game.counter <= 0) {
-      console.log("time is up");
+      alert("You have been demoted!");
       game.done();
     }
   },
   start: function () {
     timer = setInterval(game.countdown, 1000);
-    $('#subwrapper').prepend('<h2>Time Remaining: <span id="counter">90</span> Seconds</h2>');
+    $('#subwrapper').append('<h2>Time Remaining: <span id="counter">60</span> Seconds</h2>');
     $("#start").remove();
+    $(".rules").remove();
     for (var i = 0; i < questions.length; i++) {
       $("#subwrapper").append('<h2>' + questions[i].question + '</h2>');
       for (var j = 0; j < questions[i].answers.length; j++) {
         $("#subwrapper").append("<input type='radio' name='question-" + i + "' value='" + questions[i].answers[j] + " '>" + questions[i].answers[j])
       }
     }
-    $("#subwrapper").append('<br><button id="end">Done!</button>')
+    $("#subwrapper").append('<br><button id="end">Submit</button>')
   },
 
   done: function () {
@@ -106,7 +107,6 @@ var game = {
 
   result: function () {
     clearInterval(timer);
-    $('#subwrapper h2').remove();
 
     $('#subwrapper').html("<h2>All done!</h2>");
     $('#subwrapper').append("<h3>Correct Answers: '+this.correct+'</h3>");
